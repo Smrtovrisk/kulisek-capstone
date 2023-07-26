@@ -7,6 +7,8 @@ import Admin from './Admin';
 import Customer from './Customer';
 import AddMedicine from './AddMedicine';
 import ViewMedicine from './ViewMedicine';
+import Cart from './Cart';
+
 function App() {
   return (
     <div className="App">
@@ -21,6 +23,7 @@ function App() {
       </Route>
       <Route path='/customer' element={<Customer/>}>
       <Route path="viewMedicine" element={<ViewMedicine/>}></Route>
+      <Route path="cart" element={<Cart/>}></Route>
       </Route>
      </Routes>
     </div>
