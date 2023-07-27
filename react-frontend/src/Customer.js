@@ -1,6 +1,8 @@
 // Customer.js
-import { useState } from 'react';
+import { useState, createContext, useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+
+export const CartContext = createContext();
 
 function Customer() {
   const [cart, setCart] = useState([]);
@@ -16,9 +18,12 @@ function Customer() {
       <Link to="cart">View Cart ({cart.length})</Link> |
       <Link to="/">Logout</Link>
       <hr/>
-      <Outlet addToCart={addToCart}/>
+      <CartContext.Provider value={{ cart,setCart, addToCart }}>
+        <Outlet/>
+      </CartContext.Provider>
     </div>
   );
 }
 
 export default Customer;
+

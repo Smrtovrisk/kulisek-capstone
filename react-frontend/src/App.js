@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import { useState } from "react";
 import './App.css';
 import Login from './Login';
 import SignUp from './SignUp';
@@ -8,12 +8,14 @@ import Customer from './Customer';
 import AddMedicine from './AddMedicine';
 import ViewMedicine from './ViewMedicine';
 import Cart from './Cart';
+import { UserContext } from './UserContext';
+
 
 function App() {
+  const [user, setUser] = useState(null);
   return (
     <div className="App">
-     
-
+     <UserContext.Provider value={{ user, setUser }}>
      <Routes>
       <Route path="/" element={<Login/>}></Route>
       <Route path="/signup" element={<SignUp/>}></Route>
@@ -26,6 +28,7 @@ function App() {
       <Route path="cart" element={<Cart/>}></Route>
       </Route>
      </Routes>
+     </UserContext.Provider>
     </div>
   );
 }

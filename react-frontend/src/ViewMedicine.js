@@ -1,14 +1,17 @@
-// ViewMedicine.js
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { CartContext } from './Customer';
+import {UserContext} from './UserContext';
 
-function ViewMedicine({ addToCart }) {
+function ViewMedicine() {
+  const { addToCart } = useContext(CartContext);
   const [products, setProducts] = useState([]);
   const [filter, setFilter] = useState('');
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await axios.get('http://localhost:8081/product/viewAllProducts');
+      const response = await axios.get('http://localhost:8081/products/viewAllProducts');
       setProducts(response.data);
     };
 
@@ -24,7 +27,7 @@ function ViewMedicine({ addToCart }) {
   };
 
   const filteredProducts = products.filter((product) =>
-    product.productName.toLowerCase().includes(filter.toLowerCase())
+    product.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   return (
@@ -36,15 +39,31 @@ function ViewMedicine({ addToCart }) {
         value={filter}
         onChange={handleFilterChange}
       />
-      {filteredProducts.map((product) => (
-        <div key={product.productId}>
-          <h3>{product.productName}</h3>
-          <p>{product.productDescription}</p>
-          <button onClick={() => handleAddToCart(product)}>
-            Add to cart
-          </button>
-        </div>
-      ))}
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            {user.type !== 'admin' && <th>Add to cart</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {filteredProducts.map((product) => (
+            <tr key={product.id}>
+              <td>{product.name}</td>
+              <td>{product.description}</td>
+              <td>{product.price}</td>
+              {user.type !== 'admin' && (
+                <td>
+                  <button onClick={() => handleAddToCart(product)}>
+                    Add to cart
+                  </button>
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

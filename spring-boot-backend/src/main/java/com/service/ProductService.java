@@ -25,4 +25,7 @@ public class ProductService {
     public List<Product> searchProducts(Specification<Product> spec) {
         return productRepository.findAll(spec);
     }
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
 }

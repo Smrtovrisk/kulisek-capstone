@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {Link,useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './styles.css'; 
+import { UserContext } from './UserContext';
 
 function Login() {
 let [emailid,setEmailiId]=useState("");
 let [password,setPassword]=useState("");
 let [typeofuser,setTypeOfUser]=useState("");
 let navigate = useNavigate();
+const { setUser } = useContext(UserContext);
+
 let signIn=async (event)=> {
     event.preventDefault();
     let login = {"emailid":emailid,"password":password,"typeofuser":typeofuser};
@@ -15,8 +18,10 @@ let signIn=async (event)=> {
     let result = await axios.post("http://localhost:8081/login/signIn",login);
     //console.log(result.data);
     if(result.data=="Admin Success"){
+        setUser({ email: emailid, type: 'admin' });
         navigate("/Admin");
     }else if(result.data=="Customer success"){
+        setUser({ email: emailid, type: 'customer' });
         navigate("/Customer");
     }else {
         alert(result.data);

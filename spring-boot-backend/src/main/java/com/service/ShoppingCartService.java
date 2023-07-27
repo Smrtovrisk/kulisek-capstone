@@ -65,31 +65,17 @@ public class ShoppingCartService {
     }
 
     @Transactional
-    public void checkout(String emailid) {
+    public void checkout(String emailid, Double totalCost) {
         Optional<Account> optionalAccount = accountRepository.findByEmailid(emailid);
         if (!optionalAccount.isPresent()) {
             throw new RuntimeException("Account not found");
         }
         Account account = optionalAccount.get();
 
-        Optional<ShoppingCart> optionalShoppingCart = shoppingCartRepository.findByAccount(account);
-        if (!optionalShoppingCart.isPresent()) {
-            throw new RuntimeException("Shopping cart not found");
-        }
-        ShoppingCart shoppingCart = optionalShoppingCart.get();
-
-        float total = 0;
-        for (CartItem cartItem : shoppingCart.getCartItems()) {
-            total += cartItem.getProduct().getPrice() * cartItem.getQuantity();
-        }
-
-        if (account.getAmount() < total) {
+        if (account.getAmount() < totalCost) {
             throw new RuntimeException("Insufficient funds");
         }
 
-        account.setAmount(account.getAmount() - total);
-        shoppingCart.getCartItems().clear();
+        account.setAmount(account.getAmount() - totalCost.floatValue());
         accountRepository.save(account);
-        shoppingCartRepository.save(shoppingCart);
-    }
-}
+    }}
