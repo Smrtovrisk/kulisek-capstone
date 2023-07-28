@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: mysql:8.0.21
+    environment:
+      MYSQL_ROOT_PASSWORD: Simplilearn
+      MYSQL_DATABASE: capstone
+    ports:
+      - "3306:3306"
+  backend:
+    build: ./spring-boot-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/capstone
+    depends_on:
+      - db
+    ports:
+      - "8081:8081"
+  frontend:
+    build: ./react-frontend
+    environment:
+      REACT_APP_BACKEND_URL: http://backend:8081
+    depends_on:
+      - backend
+    ports:
+      - "3000:3000"

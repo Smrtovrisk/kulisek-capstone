@@ -11,7 +11,7 @@ function ViewMedicine() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await axios.get('http://localhost:8081/products/viewAllProducts');
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/products/viewAllProducts`);
       setProducts(response.data);
     };
 

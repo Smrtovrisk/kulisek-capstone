@@ -16,7 +16,7 @@ function AddMedicine() {
             "price": productPrice
         };
         try {
-            let result = await axios.post("http://localhost:8081/products", product);
+            let result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/products`, product);
             if(result.status === 200) {
                 alert('Product added successfully');
                 navigate("/Admin");

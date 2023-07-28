@@ -30,7 +30,7 @@ function Cart() {
 
     try {
       const response = await axios.post(
-        `http://localhost:8081/cart/${encodedEmail}/checkout`,
+        `${process.env.REACT_APP_BACKEND_URL}/cart/${encodedEmail}/checkout`,
         totalCost,
         {
           headers: {

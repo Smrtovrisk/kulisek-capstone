@@ -1,7 +1,7 @@
 // Admin.js
 import {Link, Outlet} from 'react-router-dom';
 import { useState, createContext, useContext } from 'react';
-import { CartContext } from './Customer'; // Import context from Customer component file
+import { CartContext } from './Customer';
 
 function Admin() {
 

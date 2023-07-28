@@ -1,4 +1,3 @@
-// Customer.js
 import { useState, createContext, useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 

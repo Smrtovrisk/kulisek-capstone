@@ -10,7 +10,7 @@ let signIn=async (event)=> {
     event.preventDefault();
     let login = {"emailid":emailid,"password":password,"typeofuser":typeofuser};
     try{
-    let result = await axios.post("http://localhost:8081/login/signUp",login);
+    let result = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login/signUp`,login);
     console.log(result.data);
     }catch(ex){
         console.log(ex);
