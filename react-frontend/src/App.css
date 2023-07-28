@@ -1,38 +1,129 @@
+/* Globální styly */
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background: linear-gradient(to bottom right, #ffffff, #c5e1a5);
+    min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  padding: 1em;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="number"], select {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 10px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="submit"], button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover, button:hover {
+  background-color: #45a049;
+}
+
+input[type="reset"], button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+input[type="reset"]:hover, button:hover {
+  background-color: #45a049;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  color: #333;
+}
+
 .App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.Link {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+/* Responzivní styly */
+@media screen and (max-width: 600px) {
+  .App {
+    padding: 10px;
+  }
+}
+
+/* Admin stránka */
+.Admin {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* AddMedicine stránka */
+.AddMedicine {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Cart stránka */
+.Cart {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Customer stránka */
+.Customer {
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* Login stránka */
+.Login {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* SignUp stránka */
+.SignUp {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ViewMedicine stránka */
+.ViewMedicine {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
 }

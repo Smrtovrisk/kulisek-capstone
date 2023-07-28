@@ -12,7 +12,7 @@ function Customer() {
   };
 
   return (
-    <div>
+    <div className="Customer">
       <h2>Welcome to Customer Home Page</h2>
       <Link to="viewMedicine">View Medicine</Link> |
       <Link to="cart">View Cart ({cart.length})</Link> |

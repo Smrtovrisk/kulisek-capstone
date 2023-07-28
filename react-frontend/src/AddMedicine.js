@@ -29,7 +29,7 @@ function AddMedicine() {
     }
 
     return(
-        <div>
+        <div className="AddMedicine">
             <h2>Add Product</h2>
             <form onSubmit={addProduct}>
                 <label>Product Name</label>

@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import {Link,useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import './styles.css'; 
+// import './styles.css'; 
 import { UserContext } from './UserContext';
 
 function Login() {
@@ -31,9 +31,9 @@ let signIn=async (event)=> {
     }
 }
 return(
-    <div> <h1>Welcome to Medicare</h1>
+    <div className="Login"> <h1>Welcome to Medicare</h1>
     <div className="login-div">
-      <div>Login Page</div>
+      <h2>Login Page</h2>
       <form onSubmit={signIn}>
         <label>Email</label>
         <input type="email" name="emidlid" onChange={e=>setEmailiId(e.target.value)}/><br/>

@@ -31,7 +31,7 @@ function ViewMedicine() {
   );
 
   return (
-    <div>
+    <div className="ViewMedicine">
       <h2>View Medicine</h2>
       <input
         type="text"

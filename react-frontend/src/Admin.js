@@ -12,7 +12,7 @@ function Admin() {
     };
 
     return(
-        <div>
+        <div className="Admin">
             <h2>Welcome to Admin Home Page</h2>
             <Link to="addMedicine">Add Medicine</Link> |
             <Link to="viewMedicine">View Medicine</Link> |

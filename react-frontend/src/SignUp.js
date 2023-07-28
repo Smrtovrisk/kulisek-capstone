@@ -17,7 +17,7 @@ let signIn=async (event)=> {
     }
 }
     return(
-        <div>
+        <div className="SignUp">
         <div>Account Create</div>
         <form onSubmit={signIn}>
         <label>EmailId</label>
