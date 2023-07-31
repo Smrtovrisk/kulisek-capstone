@@ -7,7 +7,7 @@ COPY src ./src
 RUN mvn package
 
 # Run stage
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11-jdk
 VOLUME /tmp
 COPY --from=build /app/target/*.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
